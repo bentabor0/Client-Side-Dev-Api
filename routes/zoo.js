@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 ///////////////////////////////// Create mongoose schema and Zoo const /////////////////////////////////
+
 const ZooSchema = new Schema({
     zooName: {
         type: String,
@@ -101,7 +102,7 @@ let middleware = (req) => {
 };
 
 // Zoo help page
-router.get('/zoo-help', (req, res, next) => {
+router.get('/', (req, res, next) => {
     res.send(`<!DOCTYPE html>
         <html lang="en">
         <head>
@@ -112,7 +113,12 @@ router.get('/zoo-help', (req, res, next) => {
         </head>
         <body>
           <h1>Zoo Api</h1>
-          <p>Welcome to the home page here are the commands:</p>
+          <h2>List of avaliable requests, the type of request followed by the route</h2>
+          <p>GET --- /zoos: gets all zoos</p>
+          <p>GET --- /zooID/"zooID": replece "zooID" with zoo id value, returns a zoo</p>
+          <p>POST --- /zoos: with zoo json body will add a zoo to the database</p>
+          <p>PUT --- /zooID/"zooID": replece "zooID" with zoo id value, updates a zoo</p>
+          <p>DELETE --- /zooID/"zooID": replece "zooID" with zoo id value, deletes a zoo</p>
         </body>
         </html>`)
 });
